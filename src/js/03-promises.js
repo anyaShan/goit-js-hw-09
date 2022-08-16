@@ -9,17 +9,18 @@ const refs = {
 refs.submitBtnEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
-  let firstDelay = Number(refs.delayInputEl);
+  const firstDelay = Number(refs.delayInputEl);
+  const delay = Number(refs.stepInputEl);
   setTimeout(() => {
-    let positions = Number(refs.amountInputEl);
-    for (const position of positions) {
-      createPromise();
+    const positions = Number(refs.amountInputEl);
+    for (let position = 1; position <= positions; position += 1) {
+      createPromise(position, delay);
     }
   }, firstDelay);
 }
 
 function createPromise(position, delay) {
-  delay = Number(refs.stepInputEl);
+  // delay = Number(refs.stepInputEl);
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
