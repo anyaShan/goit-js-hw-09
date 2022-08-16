@@ -16,3 +16,15 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.fulfilled-text {
+  padding: 5px;
+  background-color: green;
+  border-radius: 2px;
+}
+
+.rejected-text {
+  padding: 5px;
+  background-color: red;
+  border-radius: 2px;
+}
