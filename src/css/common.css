@@ -12,7 +12,7 @@ body {
   line-height: 1.5;
 }
 
-button {
+.color-button {
   padding: 15px;
   border-radius: 0px;
   /* margin: 10px; */

@@ -1,11 +1,12 @@
 const refs = {
   bodyEl: document.body,
-  btnEl: document.querySelectorAll('button'),
   startBtn: document.querySelector('button[data-start]'),
   stopBtn: document.querySelector('button[data-stop]'),
 };
 
 refs.bodyEl.style.textAlign = 'center';
+refs.startBtn.classList.add('color-button');
+refs.stopBtn.classList.add('color-button');
 
 let timerId = null;
 refs.stopBtn.disabled = true;
