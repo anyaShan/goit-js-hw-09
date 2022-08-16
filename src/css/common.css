@@ -12,6 +12,12 @@ body {
   line-height: 1.5;
 }
 
+button {
+  padding: 15px;
+  border-radius: 0px;
+  /* margin: 10px; */
+}
+
 img {
   display: block;
   max-width: 100%;
