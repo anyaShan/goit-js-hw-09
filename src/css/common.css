@@ -23,14 +23,51 @@ img {
   max-width: 100%;
 }
 
-.fulfilled-text {
+.container {
+  display: flex;
+
+  flex-grow: 1;
+  align-items: baseline;
+}
+.form {
+  display: flex;
+  align-items: stretch;
+  margin-left: 15px;
+}
+.form label {
+  /* display: flex; */
+  margin-right: 10px;
+}
+
+.form input {
   padding: 5px;
-  background-color: green;
-  border-radius: 2px;
+  height: 100%;
+}
+.promises-list {
+  padding: 0;
+  margin-left: auto;
+  list-style: none;
+}
+
+.form button {
+  padding: 10px;
+  border-radius: 0;
+}
+.promises-item {
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  text-align: center;
+}
+.promises-item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.fulfilled-text {
+  background-color: rgba(0, 128, 0, 0.6);
 }
 
 .rejected-text {
-  padding: 5px;
-  background-color: red;
-  border-radius: 2px;
+  background-color: rgba(255, 0, 0, 0.7);
 }
