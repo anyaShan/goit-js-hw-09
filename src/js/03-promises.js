@@ -2,6 +2,7 @@ const refs = {
   formEl: document.querySelector('.form'),
   submitBtnEl: document.querySelector('button[type="submit"]'),
 };
+console.log(refs.inputsEL);
 
 const body = document.body;
 body.classList = 'container';
@@ -15,6 +16,7 @@ refs.formEl.addEventListener('submit', onFormSubmit);
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
+
     setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });
