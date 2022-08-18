@@ -6,18 +6,13 @@ const refs = {
 const body = document.body;
 body.classList = 'container';
 
-const listOfPromises = document.createElement('ul');
-listOfPromises.classList = 'promises-list';
-refs.formEl.after(listOfPromises);
-
 refs.formEl.addEventListener('submit', onFormSubmit);
-let timeoutId = null;
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
 
-    timeoutId = setTimeout(() => {
+    setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });
       } else {
@@ -26,6 +21,8 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
+
+creatListOfPromises();
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -44,6 +41,8 @@ function onFormSubmit(event) {
 
   console.log(firstDelay, stepEl, amountEl);
 
+  cleanListOfPromises();
+
   for (let position = 1; position <= amountEl; position += 1) {
     createPromise(position, firstDelay)
       .then(({ position, delay }) => {
@@ -58,20 +57,23 @@ function onFormSubmit(event) {
   }
 }
 
+function creatListOfPromises() {
+  const listOfPromises = document.createElement('ul');
+  listOfPromises.classList = 'promises-list';
+  refs.formEl.after(listOfPromises);
+  return (refs.listOfPromises = document.querySelector('.promises-list'));
+}
+
+function cleanListOfPromises() {
+  return (refs.listOfPromises.innerHTML = '');
+}
+
 function fulfilled({ position, delay }) {
   const string = `<li class="promises-item fulfilled-text">✅ Fulfilled promise ${position} in ${delay}ms</li>`;
-  listOfPromises.insertAdjacentHTML('beforeend', string);
+  refs.listOfPromises.insertAdjacentHTML('beforeend', string);
 }
 
 function rejected({ position, delay }) {
   const string = `<li class="promises-item rejected-text">❌ Rejected promise ${position} in ${delay}ms</li>`;
-  listOfPromises.insertAdjacentHTML('beforeend', string);
+  refs.listOfPromises.insertAdjacentHTML('beforeend', string);
 }
-
-// function removePromise() {
-//   const item = document.querySelector('li');
-
-//   if (item) {
-//     item.remove();
-//   }
-// }
