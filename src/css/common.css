@@ -39,7 +39,8 @@ img {
   margin-right: 10px;
 }
 
-.form input {
+.form input,
+.input-timer {
   padding: 5px;
   height: 100%;
 }
@@ -70,4 +71,27 @@ img {
 
 .rejected-text {
   background-color: rgba(255, 0, 0, 0.7);
+}
+
+.button-timer {
+  padding: 5px;
+  border-radius: 0;
+}
+.timer {
+  display: flex;
+  margin-top: 15px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  text-align: center;
+}
+.field .value {
+  font-size: 34px;
+}
+
+.field .label {
+  text-transform: uppercase;
+  font-size: 14px;
 }

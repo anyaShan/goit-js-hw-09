@@ -10,6 +10,9 @@ const refs = {
   timerFaceSeconds: document.querySelector('span[data-seconds]'),
 };
 
+refs.inputDateEl.classList = 'input-timer';
+refs.startBtnEl.classList = 'button-timer';
+
 // const options = {
 //   // Вмикає засіб вибору часу
 //   enableTime: true,
