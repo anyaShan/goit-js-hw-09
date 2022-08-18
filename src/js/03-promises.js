@@ -2,7 +2,6 @@ const refs = {
   formEl: document.querySelector('.form'),
   submitBtnEl: document.querySelector('button[type="submit"]'),
 };
-console.log(refs.inputsEL);
 
 const body = document.body;
 body.classList = 'container';
@@ -12,12 +11,13 @@ listOfPromises.classList = 'promises-list';
 refs.formEl.after(listOfPromises);
 
 refs.formEl.addEventListener('submit', onFormSubmit);
+let timeoutId = null;
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
 
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });
       } else {
@@ -37,6 +37,11 @@ function onFormSubmit(event) {
   let stepEl = Number(step.value);
   let amountEl = Number(amount.value);
 
+  if (firstDelay < 0 || stepEl < 0 || amountEl < 0) {
+    alert('Enter a number greater than 0');
+    return;
+  }
+
   console.log(firstDelay, stepEl, amountEl);
 
   for (let position = 1; position <= amountEl; position += 1) {
@@ -53,12 +58,20 @@ function onFormSubmit(event) {
   }
 }
 
-function fulfilled(position, delay) {
+function fulfilled({ position, delay }) {
   const string = `<li class="promises-item fulfilled-text">✅ Fulfilled promise ${position} in ${delay}ms</li>`;
   listOfPromises.insertAdjacentHTML('beforeend', string);
 }
 
-function rejected(position, delay) {
+function rejected({ position, delay }) {
   const string = `<li class="promises-item rejected-text">❌ Rejected promise ${position} in ${delay}ms</li>`;
   listOfPromises.insertAdjacentHTML('beforeend', string);
 }
+
+// function removePromise() {
+//   const item = document.querySelector('li');
+
+//   if (item) {
+//     item.remove();
+//   }
+// }
