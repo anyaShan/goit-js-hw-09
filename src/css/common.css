@@ -88,10 +88,10 @@ img {
   text-align: center;
 }
 .field .value {
-  font-size: 34px;
+  font-size: 36px;
 }
 
 .field .label {
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 10px;
 }
