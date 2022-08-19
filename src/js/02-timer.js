@@ -29,8 +29,11 @@ flatpickr(refs.inputDateEl, {
 
     if (futureTime < Date.now()) {
       Notiflix.Notify.failure('Please choose a date in the future');
+      refs.startBtnEl.disabled = true;
+      futureTime = Date.now();
+    } else {
+      refs.startBtnEl.disabled = false;
     }
-    refs.startBtnEl.disabled = false;
   },
 });
 
@@ -44,6 +47,7 @@ class Timer {
 
   start() {
     refs.startBtnEl.disabled = true;
+    refs.inputDateEl.disabled = true;
 
     this.intervalId = setInterval(() => {
       const currentTime = Date.now();
